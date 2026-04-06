@@ -207,6 +207,43 @@ nav ul li a.active {
 
 .site-banner strong { color: var(--text); font-weight: 400; }
 
+/* ===== Essay intro styles ===== */
+.intro-essay p {
+  font-size: 1.02rem;
+  line-height: 2;
+  color: #cdc5b8;
+  margin-bottom: 1.6rem;
+  max-width: 680px;
+}
+
+/* Thesis paragraph — set apart visually */
+.intro-essay .thesis-graf {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.12rem;
+  color: var(--text);
+  border-left: 3px solid var(--accent);
+  padding-left: 1.4rem;
+  margin: 2.4rem 0;
+}
+
+/* Inline text citations from the passage */
+.intro-essay q {
+  quotes: "\201C" "\201D";
+  font-style: italic;
+  color: var(--text);
+}
+
+.intro-essay q::before { content: open-quote; }
+.intro-essay q::after  { content: close-quote; }
+
+.intro-essay cite {
+  font-style: normal;
+  font-size: 0.82rem;
+  color: var(--gold);
+  letter-spacing: 0.02em;
+}
+
 /* ===== Edition Split (cover + nav) ===== */
 .edition-split {
   display: grid;
