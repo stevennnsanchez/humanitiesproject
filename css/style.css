@@ -262,6 +262,61 @@ nav ul li a.active {
   line-height: 1.5;
 }
 
+/* ===== Book Cover ===== */
+.book-cover-section {
+  background: #000;
+  border-bottom: 1px solid var(--border);
+  padding: 3.5rem 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.book-cover-inner {
+  display: flex;
+  justify-content: center;
+}
+
+.book-cover-frame {
+  width: 240px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.8), 4px 0 12px rgba(0,0,0,0.5);
+  border-radius: 2px;
+  overflow: hidden;
+  background: #1a1410;
+}
+
+.book-cover-frame img {
+  width: 100%;
+  display: block;
+}
+
+.book-cover-placeholder {
+  width: 240px;
+  height: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px dashed var(--border-mid);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  text-align: center;
+  padding: 1rem;
+  letter-spacing: 0.06em;
+}
+
+.book-cover-placeholder span {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.book-cover-placeholder small {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
 /* ===== Claim section ===== */
 .claim-section {
   max-width: var(--max-width);
