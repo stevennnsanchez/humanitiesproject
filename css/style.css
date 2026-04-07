@@ -616,7 +616,7 @@ nav ul li a.active {
   line-height: 1;
   color: var(--border);
   position: absolute;
-  top: 2.5rem;
+  bottom: 2rem;
   right: 3rem;
   pointer-events: none;
   user-select: none;
