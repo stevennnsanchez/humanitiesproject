@@ -539,76 +539,152 @@ nav ul li a.active {
 }
 
 /* ===== Images ===== */
-.image-grid {
+/* ===== Image Program — Immersive Layout ===== */
+
+/* Full-screen section per image */
+.img-scene {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 4rem;
-}
-
-.image-entry {
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
   border-bottom: 1px solid var(--border);
-  padding-bottom: 4rem;
-}
-
-.image-entry:last-child { border-bottom: none; padding-bottom: 0; }
-
-.image-figure {
-  background: var(--bg-section);
-  border: 1px solid var(--border-mid);
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 260px;
   overflow: hidden;
 }
 
-.image-figure img {
-  width: 100%;
-  display: block;
-  max-height: 500px;
-  object-fit: contain;
+/* Alternate: even scenes flip the order */
+.img-scene.flip { direction: rtl; }
+.img-scene.flip > * { direction: ltr; }
+
+/* Image panel — fills its half, image covers it */
+.img-panel {
+  position: relative;
+  overflow: hidden;
+  background: #000;
 }
 
-.image-placeholder {
+.img-panel img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.8s ease;
+}
+
+.img-scene:hover .img-panel img {
+  transform: scale(1.03);
+}
+
+/* Placeholder when no image yet */
+.img-panel .image-placeholder {
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 260px;
   color: var(--text-muted);
-  text-align: center;
-  padding: 2rem;
+  font-size: 0.78rem;
 }
 
-.image-placeholder .icon { font-size: 2rem; margin-bottom: 0.5rem; opacity: 0.3; }
+.img-panel .image-placeholder .icon {
+  font-size: 2.5rem;
+  opacity: 0.2;
+  margin-bottom: 0.5rem;
+}
 
-.image-num {
+/* Text panel */
+.img-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem 4.5rem;
+  background: var(--bg);
+  position: relative;
+}
+
+/* Large decorative number */
+.img-scene-num {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 7rem;
+  line-height: 1;
+  color: var(--border);
+  position: absolute;
+  top: 2.5rem;
+  right: 3rem;
+  pointer-events: none;
+  user-select: none;
+}
+
+.img-scene.flip .img-scene-num {
+  right: auto;
+  left: 3rem;
+}
+
+.img-label {
   font-size: 0.65rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.7rem;
 }
 
-.image-caption {
+.img-caption {
   font-family: var(--font-serif);
-  font-size: 1.05rem;
   font-style: italic;
+  font-size: 1.5rem;
   color: var(--text);
-  margin-bottom: 0.4rem;
+  line-height: 1.25;
+  margin-bottom: 1.8rem;
 }
 
-.image-source {
-  font-size: 0.75rem;
+.img-analysis {
+  font-size: 0.95rem;
+  line-height: 1.95;
   color: var(--text-muted);
-  margin-bottom: 1.1rem;
+  max-width: 480px;
 }
 
-.image-analysis {
-  font-size: 0.92rem;
-  line-height: 1.85;
-  color: var(--text-muted);
+/* Scroll-in animation */
+.img-text,
+.img-panel {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+
+.img-panel {
+  transform: translateX(-20px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.img-scene.flip .img-panel {
+  transform: translateX(20px);
+}
+
+.img-scene.visible .img-text,
+.img-scene.visible .img-panel {
+  opacity: 1;
+  transform: none;
+}
+
+.img-text { transition-delay: 0.15s; }
+
+/* Responsive */
+@media (max-width: 860px) {
+  .img-scene,
+  .img-scene.flip {
+    grid-template-columns: 1fr;
+    direction: ltr;
+    min-height: auto;
+  }
+  .img-panel { min-height: 55vw; position: relative; }
+  .img-panel img { position: absolute; }
+  .img-text { padding: 2.5rem 1.8rem 3rem; }
+  .img-scene-num { font-size: 4rem; top: 1.5rem; right: 1.5rem; }
+  .img-scene.flip .img-scene-num { left: 1.5rem; right: auto; }
+  .img-caption { font-size: 1.2rem; }
 }
 
 /* ===== Argument callout ===== */
